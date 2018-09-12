@@ -1,5 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block content %}
+    <div class="row justify-content-md-center col-sm-12 col-md-12" style="margin-top: 50px;">
 
+        {% for item in items %}
+            <div class="card" style="margin: 20px">
+                <img src="#">
+                <h4 class="card-title">{{ item.title }}</h4>
+                <p>{{ 'skateboard.list.length'| trans }}{{ item.length }} cm.</p>
+                <p>{{ 'skateboard.list.width'| trans }}{{ item.width }} cm.</p>
+                <p>{{ 'skateboard.list.weight'| trans }}{{ item.weight }} kg.</p>
+                <p>{{ 'skateboard.list.max_user_weight'| trans }}{{ item.maxUserWeight }} kg.</p>
+                <h5>{{ 'skateboard.list.price'| trans }}{{ item.price }} Eu</h5>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-success">{{ 'skateboard.list.order'| trans }}</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

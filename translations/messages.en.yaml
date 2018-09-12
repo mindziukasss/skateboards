@@ -2,3 +2,11 @@ header:
   logo: Skateboard-store
   skateboards: Skateboards
   orders: Orders
+skateboard:
+  list:
+    length: Length:
+    width: Width:
+    weight: Weight:
+    max_user_weight: Maximum user weight:
+    price: Price:
+    order: Order

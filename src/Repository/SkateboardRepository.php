@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Skateboard\Skateboard;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -22,5 +23,15 @@ class SkateboardRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Skateboard::class);
+    }
+
+    /**
+     * @return QueryBuilder
+     */
+    public function createAll(): QueryBuilder
+    {
+        $qb = $this->createQueryBuilder('s');
+
+        return $qb;
     }
 }
