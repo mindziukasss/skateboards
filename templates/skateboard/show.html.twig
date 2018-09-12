@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <div class="row col-sm-12 col-md-6">
+        <div class="card" style="margin: 90px">
+            <img src="#">
+            <h4 class="card-title">{{ item.title }}</h4>
+            <p>{{ 'skateboard.show.length'| trans }}{{ item.length }} cm.</p>
+            <p>{{ 'skateboard.show.width'| trans }}{{ item.width }} cm.</p>
+            <p>{{ 'skateboard.show.weight'| trans }}{{ item.weight }} kg.</p>
+            <p>{{ 'skateboard.show.description'| trans }}{{ item.description }}</p>
+            <p>{{ 'skateboard.show.max_user_weight'| trans }}{{ item.maxUserWeight }} kg.</p>
+            <h5>{{ 'skateboard.show.price'| trans }}{{ item.price }} Eu</h5>
+        </div>
+    </div>
+{% endblock %}

@@ -10,3 +10,10 @@ skateboard:
     max_user_weight: Maximum user weight:
     price: Price:
     order: Order
+  show:
+    length: Length:
+    width: Width:
+    weight: Weight:
+    max_user_weight: Maximum user weight:
+    price: Price:
+    description: Description:
