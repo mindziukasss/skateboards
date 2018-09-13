@@ -13,7 +13,7 @@
                 <p>{{ 'skateboard.list.max_user_weight'| trans }}{{ item.maxUserWeight }} kg.</p>
                 <h5>{{ 'skateboard.list.price'| trans }}{{ item.price }} Eu</h5>
                 <div class="card-footer">
-                    <a href="{{ path('app_skateboards_skateboard_show',  {'id': item.id }) }}" class="btn btn-success">{{ 'skateboard.list.order'| trans }}</a>
+                    <a href="{{ path('app_orders_orders_new',  {'skateboard': item.id }) }}" class="btn btn-success">{{ 'skateboard.list.order'| trans }}</a>
                 </div>
             </div>
         {% endfor %}

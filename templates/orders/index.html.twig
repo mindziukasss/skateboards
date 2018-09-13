@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>{{'orders.orders'|trans }}</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{ 'orders.id'|trans }}</th>
+                <th>{{ 'orders.skateboard'|trans }}</th>
+                <th>{{ 'orders.name'|trans }}</th>
+                <th>{{ 'orders.surname'|trans }}</th>
+                <th>{{ 'orders.email'|trans }}</th>
+                <th>{{ 'orders.phone'|trans }}</th>
+                <th>{{ 'orders.city'|trans }}</th>
+                <th>{{ 'orders.address'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order in items %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>
+                    {{ order.skateboard.title }}
+                    {{ order.skateboard.price }} Eu
+                </td>
+                <td>{{ order.name|default('-') }}</td>
+                <td>{{ order.surname|default('-') }}</td>
+                <td>{{ order.email|default('-') }}</td>
+                <td>{{ order.phone|default('-') }}</td>
+                <td>{{ order.city|default('-') }}</td>
+                <td>{{ order.address|default('-') }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">{{ 'orders.no_records'|trans }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

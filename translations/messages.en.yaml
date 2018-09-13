@@ -17,3 +17,25 @@ skateboard:
     max_user_weight: Maximum user weight:
     price: Price:
     description: Description:
+orders:
+  orders: Orders list
+  id: Id
+  skateboard: Skateboard
+  name: Name
+  surname: Surname
+  email: Email
+  phone: Phone
+  city: City
+  address: Address
+  no_records: No records found
+order:
+  form:
+    name: Name
+    surname: Surname
+    email: Email
+    phone: Phone
+    city: City
+    address: Address
+    order: Order
+    title: New Order
+    new: Create new order

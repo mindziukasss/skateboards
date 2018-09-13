@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'order.form.title'|trans }}{% endblock %}
+
+{% block content %}
+    <h1>{{ 'order.form.new'|trans }}</h1>
+
+    {% include('orders/_form.html.twig') %}
+    
+{% endblock %}
