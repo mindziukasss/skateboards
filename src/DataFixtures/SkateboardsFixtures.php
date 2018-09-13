@@ -2,6 +2,9 @@
 
 namespace App\DataFixtures;
 
+use App\DataFixtures\Traits\WithFileManagementTrait;
+use App\DataFixtures\Traits\WithRandomsTrait;
+use App\Entity\Media\Media;
 use App\Entity\Skateboard\Skateboard;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -11,6 +14,9 @@ use Doctrine\Common\Persistence\ObjectManager;
  */
 class SkateboardsFixtures extends Fixture
 {
+    use WithFileManagementTrait,
+        WithRandomsTrait;
+
     const COUNT_SKATEBOARDS = 100;
 
     /**
@@ -65,13 +71,14 @@ When the wheel is rolling, the color of the light, which makes your skateboard m
 
     ];
 
-
     /**
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)
     {
         for ($i = 0; $i < self::COUNT_SKATEBOARDS; $i++) {
+            $media = (new Media())
+                ->setFile($this->randomImage('skateboard', '.jpg'));
             $title = self::$titles[(rand(0, sizeof(self::$titles) - 1))];
             $description = self::$descriptions[(rand(0, sizeof(self::$descriptions) - 1))];
 
@@ -83,9 +90,11 @@ When the wheel is rolling, the color of the light, which makes your skateboard m
                 ->setWidth(mt_rand(10, 49))
                 ->setWeight(mt_rand(2, 10))
                 ->setMaxUserWeight(mt_rand(10, 110))
-                ->setLikeCount(rand(1, 5));
+                ->setLikeCount(rand(1, 5))
+                ->setMedia($media);
 
             $manager->persist($skateboard);
+            $manager->persist($media);
         }
 
         $manager->flush();

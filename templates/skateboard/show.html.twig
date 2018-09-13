@@ -1,6 +1,6 @@
 {% block content %}
     <div class="card" style="margin: 90px">
-        <img src="#">
+        <img src="{{ asset(getMediaUploadPath(item.media.filename)) }}" height="185" width="235">
         <h4 class="card-title">{{ item.title }}</h4>
         <p>{{ 'skateboard.show.length'| trans }}{{ item.length }} cm.</p>
         <p>{{ 'skateboard.show.width'| trans }}{{ item.width }} cm.</p>
