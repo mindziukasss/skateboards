@@ -2,6 +2,7 @@ header:
   logo: Skateboard-store
   skateboards: Skateboards
   orders: Orders
+  search: Search
 skateboard:
   list:
     length: Length:
@@ -10,6 +11,7 @@ skateboard:
     max_user_weight: Maximum user weight:
     price: Price:
     order: Order
+    by_price: By price
   show:
     length: Length:
     width: Width:

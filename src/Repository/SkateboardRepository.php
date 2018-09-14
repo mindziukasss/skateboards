@@ -34,4 +34,21 @@ class SkateboardRepository extends ServiceEntityRepository
 
         return $qb;
     }
+
+    /**
+     * @param array|null $filters
+     *
+     * @return QueryBuilder
+     */
+    public function createFiltered(array $filters = null)
+    {
+        $qb = $this->createQueryBuilder('s');
+
+        if($filters['searchFilter']) {
+            $qb
+                ->andwhere('s.title LIKE :search')
+                ->setParameter('search', '%' . $filters['searchFilter'] . '%');
+        }
+        return $qb;
+    }
 }

@@ -31,4 +31,14 @@ class SkateboardsService extends BaseService
         return $this->getResult($this->repository->createAll());
     }
 
+    /**
+     * @param array|null $filters
+     *
+     * @return Skateboard[]|QueryBuilder
+     * @throws \Doctrine\ORM\ORMException
+     */
+    public function getAllFiltered(array $filters = null)
+    {
+        return $this->getResult($this->repository->createFiltered($filters));
+    }
 }

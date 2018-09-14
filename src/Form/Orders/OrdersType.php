@@ -32,6 +32,7 @@ class OrdersType extends AbstractType
                     'constraints' => [new NotBlank()],
                     'attr' => [
                         'placeholder' => 'Jon',
+                        'class' => 'form-control',
                     ],
                 ]
 
@@ -43,6 +44,7 @@ class OrdersType extends AbstractType
                     'constraints' => [new NotBlank()],
                     'attr' => [
                         'placeholder' => 'Snow',
+                        'class' => 'form-control',
                     ],
                 ]
             )
@@ -53,6 +55,7 @@ class OrdersType extends AbstractType
                     'constraints' => [new NotBlank(), new Email()],
                     'attr' => [
                         'placeholder' => 'email@email.com',
+                        'class' => 'form-control',
                     ],
                 ]
             )
@@ -63,6 +66,7 @@ class OrdersType extends AbstractType
                     'constraints' => [new NotBlank()],
                     'attr' => [
                         'placeholder' => '860123456',
+                        'class' => 'form-control',
                     ],
                 ]
             )
@@ -73,6 +77,7 @@ class OrdersType extends AbstractType
                     'constraints' => [new NotBlank()],
                     'attr' => [
                         'placeholder' => 'New Your',
+                        'class' => 'form-control',
                     ],
                 ]
             )
@@ -83,6 +88,7 @@ class OrdersType extends AbstractType
                     'constraints' => [new NotBlank()],
                     'attr' => [
                         'placeholder' => 'Broadway st., 00-00',
+                        'class' => 'form-control',
                     ],
                 ]
             );

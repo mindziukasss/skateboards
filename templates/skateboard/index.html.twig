@@ -1,10 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <div class="row justify-content-md-center col-sm-12 col-md-10" style="margin-top: 50px;">
-
+    <div class="row">
+        <form class="form-inline mt-2 mt-md-0 text-center">
+            {{ form_row(form.searchFilter) }}
+            <button class="btn btn-outline-default my-2 my-sm-0"
+                    type="submit">{{ 'header.search'|trans }}</button>
+        </form>
+    </div>
+        <h5>{{ knp_pagination_sortable(items, 'By price', 's.price') }}</h5>
+        <h5>{{ knp_pagination_sortable(items, 'By length', 's.length') }}</h5>
+        <h5>{{ knp_pagination_sortable(items, 'By weight', 's.weight') }}</h5>
+    <div class="row col-sm-12 col-md-10">
         {% for item in items %}
-            <div class="card" style="margin: 20px">
+            <div class="card">
                 <img src="{{ asset(getMediaUploadPath(item.media.filename)) }}" height="150" width="235">
                 <h4 class="card-title">{{ item.title }}</h4>
                 <p>{{ 'skateboard.list.length'| trans }}{{ item.length }} cm.</p>
@@ -13,12 +22,13 @@
                 <p>{{ 'skateboard.list.max_user_weight'| trans }}{{ item.maxUserWeight }} kg.</p>
                 <h5>{{ 'skateboard.list.price'| trans }}{{ item.price }} Eu</h5>
                 <div class="card-footer">
-                    <a href="{{ path('app_orders_orders_new',  {'skateboard': item.id }) }}" class="btn btn-success">{{ 'skateboard.list.order'| trans }}</a>
+                    <a href="{{ path('app_orders_orders_new',  {'skateboard': item.id }) }}"
+                       class="btn btn-success">{{ 'skateboard.list.order'| trans }}</a>
                 </div>
             </div>
         {% endfor %}
     </div>
     <div class="navigation">
-        {{ knp_pagination_render(items)}}
+        {{ knp_pagination_render(items) }}
     </div>
 {% endblock %}
