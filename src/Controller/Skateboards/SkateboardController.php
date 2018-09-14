@@ -3,6 +3,7 @@
 namespace App\Controller\Skateboards;
 
 use App\Entity\Skateboard\Skateboard;
+use App\Paginator\PaginatorItemsList;
 use App\Service\SkateboardsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,17 +19,20 @@ class SkateboardController extends AbstractController
      * @Route("/list", name="skateboard")
      * @param SkateboardsService $skateboardsService
      *
+     * @param PaginatorItemsList $paginatorItemsList
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(
-        SkateboardsService $skateboardsService
+        SkateboardsService $skateboardsService,
+        PaginatorItemsList $paginatorItemsList
     ) {
-        $qb = $skateboardsService->setReturnQuery(false)->getAll();
+        $qb = $skateboardsService->setReturnQuery(true)->getAll();
 
         return $this->render(
             'skateboard/index.html.twig',
             [
-                'items' => $qb,
+                'items' => $paginatorItemsList->getPagination($qb),
             ]
         );
     }

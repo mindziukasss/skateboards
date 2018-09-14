@@ -5,6 +5,7 @@ namespace App\Controller\Orders;
 use App\Entity\Orders\Orders;
 use App\Entity\Skateboard\Skateboard;
 use App\Form\Orders\OrdersType;
+use App\Paginator\PaginatorItemsList;
 use App\Service\OrdersService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,20 +21,23 @@ class OrdersController extends AbstractController
 {
     /**
      * @Route("/list")
-     * @param OrdersService $ordersService
+     * @param OrdersService      $ordersService
+     *
+     * @param PaginatorItemsList $paginatorItemsList
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(
-        OrdersService $ordersService
+        OrdersService $ordersService,
+        PaginatorItemsList $paginatorItemsList
     ) {
 
-        $qb = $ordersService->setReturnQuery(false)->getAll();
+        $qb = $ordersService->setReturnQuery(true)->getAll();
 
         return $this->render(
             'orders/index.html.twig',
             [
-                'items' => $qb,
+                'items' => $paginatorItemsList->getPagination($qb),
             ]
         );
     }
