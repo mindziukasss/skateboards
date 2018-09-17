@@ -10,6 +10,7 @@ skateboard:
     weight: Weight:
     max_user_weight: Maximum user weight:
     price: Price:
+    detail: Detail
     order: Order
     by_price: By price
   show:
@@ -41,3 +42,4 @@ order:
     order: Order
     title: New Order
     new: Create new order
+    thanks_your_order: Thanks your order.We will get back to you soon!

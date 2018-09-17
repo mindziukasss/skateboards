@@ -7,6 +7,7 @@ use App\Form\Skateboard\SkateboardFilterType;
 use App\Paginator\PaginatorItemsList;
 use App\Service\SkateboardsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -58,10 +59,14 @@ class SkateboardController extends AbstractController
         Skateboard $skateboard
     ) {
 
-        return $this->render(
-            'skateboard/show.html.twig',
+        return new JsonResponse(
             [
-                'item' => $skateboard,
+                'template' => $this->renderView(
+                    'skateboard/show.html.twig',
+                    [
+                        'item' => $skateboard,
+                    ]
+                ),
             ]
         );
     }

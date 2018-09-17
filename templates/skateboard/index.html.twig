@@ -1,20 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
+    <br>
     <div class="row">
         <form class="form-inline mt-2 mt-md-0 text-center">
             {{ form_row(form.searchFilter) }}
-            <button class="btn btn-outline-default my-2 my-sm-0"
+            <button class="btn btn-outline-default my-2 my-sm-0 sort-button"
                     type="submit">{{ 'header.search'|trans }}</button>
         </form>
+        <h5 class="btn btn-success sort-button">{{ knp_pagination_sortable(items, 'By price', 's.price') }}</h5>
+        <h5 class="btn btn-success sort-button">{{ knp_pagination_sortable(items, 'By length', 's.length') }}</h5>
+        <h5 class="btn btn-success sort-button">{{ knp_pagination_sortable(items, 'By weight', 's.weight') }}</h5>
     </div>
-        <h5>{{ knp_pagination_sortable(items, 'By price', 's.price') }}</h5>
-        <h5>{{ knp_pagination_sortable(items, 'By length', 's.length') }}</h5>
-        <h5>{{ knp_pagination_sortable(items, 'By weight', 's.weight') }}</h5>
-    <div class="row col-sm-12 col-md-10">
+    <br>
+    <div class="card-columns text-center">
         {% for item in items %}
             <div class="card">
-                <img src="{{ asset(getMediaUploadPath(item.media.filename)) }}" height="150" width="235">
+                <img class="list-skateboards" src="{{ asset(getMediaUploadPath(item.media.filename)) }}" alt="Norway">
                 <h4 class="card-title">{{ item.title }}</h4>
                 <p>{{ 'skateboard.list.length'| trans }}{{ item.length }} cm.</p>
                 <p>{{ 'skateboard.list.width'| trans }}{{ item.width }} cm.</p>
@@ -22,13 +24,25 @@
                 <p>{{ 'skateboard.list.max_user_weight'| trans }}{{ item.maxUserWeight }} kg.</p>
                 <h5>{{ 'skateboard.list.price'| trans }}{{ item.price }} Eu</h5>
                 <div class="card-footer">
-                    <a href="{{ path('app_orders_orders_new',  {'skateboard': item.id }) }}"
-                       class="btn btn-success">{{ 'skateboard.list.order'| trans }}</a>
+                    <button class="js-order btn btn-success" data-href="{{ path('app_skateboards_skateboard_show',  {'id': item.id }) }}">
+                        <a data-toggle="modal" data-target="#orderModalCenter"
+                           href="{{ path('app_skateboards_skateboard_show',  {'id': item.id }) }}">{{ 'skateboard.list.detail'| trans }}</a>
+                    </button>
                 </div>
             </div>
         {% endfor %}
     </div>
+    <br>
     <div class="navigation">
         {{ knp_pagination_render(items) }}
     </div>
+
+    <div class="modal js-order-show" id="orderModalCenter" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

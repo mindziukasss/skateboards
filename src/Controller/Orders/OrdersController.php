@@ -10,7 +10,9 @@ use App\Service\OrdersService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Class OrdersController
@@ -19,6 +21,8 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class OrdersController extends AbstractController
 {
+    const MAX_ORDERS_PER_PAGE = 25;
+
     /**
      * @Route("/list")
      * @param OrdersService      $ordersService
@@ -37,16 +41,20 @@ class OrdersController extends AbstractController
         return $this->render(
             'orders/index.html.twig',
             [
-                'items' => $paginatorItemsList->getPagination($qb),
+                'items' => $paginatorItemsList->getPagination($qb, self::MAX_ORDERS_PER_PAGE),
             ]
         );
     }
 
     /**
      * @Route("/new/{skateboard}")
-     * @param Request       $request
-     * @param Skateboard    $skateboard
-     * @param OrdersService $ordersService
+     * @param Request             $request
+     * @param Skateboard          $skateboard
+     * @param OrdersService       $ordersService
+     *
+     * @param FlashBagInterface   $flashBag
+     *
+     * @param TranslatorInterface $translator
      *
      * @return Response
      * @throws \Exception
@@ -54,16 +62,17 @@ class OrdersController extends AbstractController
     public function new(
         Request $request,
         Skateboard $skateboard,
-        OrdersService $ordersService
+        OrdersService $ordersService,
+        FlashBagInterface $flashBag,
+        TranslatorInterface $translator
     ): Response {
         $order = new Orders();
         $form = $this->createForm(OrdersType::class, $order);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $order->setSkateboard($skateboard);
             $ordersService->create($order);
-
+            $flashBag->add('success', $translator->trans('order.form.thanks_your_order'));
             return $this->redirectToRoute('skateboard');
         }
 

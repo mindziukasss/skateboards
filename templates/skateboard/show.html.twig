@@ -1,5 +1,5 @@
 {% block content %}
-    <div class="card">
+    <div class="text-center">
         <img src="{{ asset(getMediaUploadPath(item.media.filename)) }}" height="185" width="235">
         <h4 class="card-title">{{ item.title }}</h4>
         <p>{{ 'skateboard.show.length'| trans }}{{ item.length }} cm.</p>
@@ -8,5 +8,7 @@
         <p>{{ 'skateboard.show.description'| trans }}{{ item.description }}</p>
         <p>{{ 'skateboard.show.max_user_weight'| trans }}{{ item.maxUserWeight }} kg.</p>
         <h5>{{ 'skateboard.show.price'| trans }}{{ item.price }} Eu</h5>
+        <a href="{{ path('app_orders_orders_new',  {'skateboard': item.id }) }}"
+        class="btn btn-success">{{ 'skateboard.list.order'| trans }}</a>
     </div>
 {% endblock %}

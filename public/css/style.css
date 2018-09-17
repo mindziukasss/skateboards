@@ -1,0 +1,14 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #f9f5f5;
+}
+
+.sort-button {
+    margin: 0px 0px 0px 10px;
+}
+
+.list-skateboards {
+    height: 175px;
+    width: auto;
+}

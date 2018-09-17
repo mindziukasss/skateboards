@@ -6,14 +6,14 @@
     <table class="table">
         <thead>
             <tr>
-                <th>{{ 'orders.id'|trans }}</th>
-                <th>{{ 'orders.skateboard'|trans }}</th>
-                <th>{{ 'orders.name'|trans }}</th>
-                <th>{{ 'orders.surname'|trans }}</th>
-                <th>{{ 'orders.email'|trans }}</th>
-                <th>{{ 'orders.phone'|trans }}</th>
-                <th>{{ 'orders.city'|trans }}</th>
-                <th>{{ 'orders.address'|trans }}</th>
+                <th>{{ knp_pagination_sortable(items, 'orders.id'|trans, 'o.id') }}</th>
+                <th>{{ knp_pagination_sortable(items, 'orders.skateboard'|trans, 's.price') }}</th>
+                <th>{{ knp_pagination_sortable(items, 'orders.name'|trans, 'o.name') }}</th>
+                <th>{{ knp_pagination_sortable(items, 'orders.surname'|trans, 'o.surname') }}</th>
+                <th>{{ knp_pagination_sortable(items, 'orders.email'|trans, 'o.email') }}</th>
+                <th>{{ knp_pagination_sortable(items, 'orders.phone'|trans, 'o.phone') }}</th>
+                <th>{{ knp_pagination_sortable(items, 'orders.city'|trans, 'o.city') }}</th>
+                <th>{{ knp_pagination_sortable(items, 'orders.address'|trans, 'o.address') }}</th>
             </tr>
         </thead>
         <tbody>
