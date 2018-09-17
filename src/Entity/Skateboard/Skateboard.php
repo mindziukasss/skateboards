@@ -71,13 +71,6 @@ class Skateboard
     private $maxUserWeight;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $likeCount;
-
-    /**
      * @return int|null
      */
     public function getId(): ?int
@@ -221,26 +214,6 @@ class Skateboard
     public function setMaxUserWeight(int $maxUserWeight): Skateboard
     {
         $this->maxUserWeight = $maxUserWeight;
-
-        return $this;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getLikeCount(): ?int
-    {
-        return $this->likeCount;
-    }
-
-    /**
-     * @param int|null $likeCount
-     *
-     * @return Skateboard
-     */
-    public function setLikeCount(?int $likeCount): Skateboard
-    {
-        $this->likeCount = $likeCount;
 
         return $this;
     }
