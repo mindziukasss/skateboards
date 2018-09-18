@@ -98,9 +98,6 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
-    "heroku/heroku-buildpack-php": {
-        "version": "v144"
-    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
@@ -157,15 +154,6 @@
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.1.2"
-    },
-    "symfony/apache-pack": {
-        "version": "1.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "1.0",
-            "ref": "c82bead70f9a4f656354a193df7bf0ca2114efa0"
-        }
     },
     "symfony/asset": {
         "version": "v4.1.4"

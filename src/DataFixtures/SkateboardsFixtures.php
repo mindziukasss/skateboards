@@ -90,7 +90,6 @@ When the wheel is rolling, the color of the light, which makes your skateboard m
                 ->setWidth(mt_rand(10, 49))
                 ->setWeight(mt_rand(2, 10))
                 ->setMaxUserWeight(mt_rand(10, 110))
-                ->setLikeCount(rand(1, 5))
                 ->setMedia($media);
 
             $manager->persist($skateboard);
