@@ -1,4 +1,1 @@
-vendor/bin/heroku-php-apache2
-<Directory /public>
-    Require all granted
-</Directory>
+$(composer config bin-dir)/heroku-php-apache2 public/
