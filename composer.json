@@ -34,7 +34,7 @@
         "symfony/profiler-pack": "*",
         "symfony/test-pack": "*",
         "symfony/web-server-bundle": "*",
-        "heroku/heroku-buildpack-php": "*"
+        "heroku/heroku-buildpack-php" : "dev-master"
     },
     "config": {
         "preferred-install": {

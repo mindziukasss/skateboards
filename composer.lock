@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "94298b49b0a0ad6235d1128a4c6332bd",
+    "content-hash": "c6c73345d569e8d315c66cc7726932e5",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -5471,7 +5471,7 @@
         },
         {
             "name": "heroku/heroku-buildpack-php",
-            "version": "v144",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/heroku/heroku-buildpack-php.git",
@@ -6445,7 +6445,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "heroku/heroku-buildpack-php": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
