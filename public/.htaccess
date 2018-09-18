@@ -4,6 +4,7 @@
 # start page (path "/") because otherwise Apache will apply the rewriting rules
 # to each configured DirectoryIndex file (e.g. index.php, index.html, index.pl).
 DirectoryIndex index.php
+Require all granted
 
 # By default, Apache does not evaluate symbolic links if you did not enable this
 # feature in your server configuration. Uncomment the following line if you
@@ -15,11 +16,12 @@ DirectoryIndex index.php
 # to the front controller "/index.php" but be rewritten to "/index.php/index".
 <IfModule mod_negotiation.c>
     Options -MultiViews
+    Require all granted
 </IfModule>
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
-
+    Require all granted
     # Determine the RewriteBase automatically and set it as environment variable.
     # If you are using Apache aliases to do mass virtual hosting or installed the
     # project in a subdirectory, the base path will be prepended to allow proper
@@ -59,6 +61,7 @@ DirectoryIndex index.php
 
 <IfModule !mod_rewrite.c>
     <IfModule mod_alias.c>
+    Require all granted
         # When mod_rewrite is not available, we instruct a temporary redirect of
         # the start page to the front controller explicitly so that the website
         # and the generated links can still be used.
